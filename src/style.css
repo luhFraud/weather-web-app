@@ -1,3 +1,53 @@
-.hello {
-    color: red;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+#main {
+    display: grid;
+    grid-template-columns: 0.5fr 3fr 2fr;
+    column-gap: 15px;
+    row-gap: 10px;
+    padding: 15px;
+    min-height: 100vh;
+    background-color: #08113B;
+}
+
+#nav {
+    grid-row: 1 / 30;
+}
+
+#search-bar {
+    grid-column: 2 / 3;
+    grid-row: 1 / 2;
+}
+
+#display-info {
+    grid-row: 2 / 12;
+}
+
+#todays-forecast {
+    grid-row: 12 / 20;
+}
+
+#air-conditions {
+    grid-row: 20 / 30;
+    grid-column: 2;
+}
+
+#seven-day-forecast {
+    grid-column: 3 / 4;
+    grid-row: 1 / 30;
+}
+
+#main > div {
+    border: 1px solid black;
+    padding: 10px;
+    background-color: #335680;
+    border-radius: 20px;
+}
+
+p {
+    text-align: center;
 }

@@ -4,50 +4,108 @@
     box-sizing: border-box;
 }
 
+body {
+    font-family: "Poppins" , sans-serif;
+    /*background-color: #FCFAF6;*/
+}
+
 #main {
     display: grid;
     grid-template-columns: 0.5fr 3fr 2fr;
-    column-gap: 15px;
-    row-gap: 10px;
-    padding: 15px;
+    column-gap: 20px;
+    row-gap: 15px;
+    padding: 20px;
     min-height: 100vh;
-    background-color: #08113B;
+    background-color: #0b131e;
+    color: #FCFAF6;
 }
 
-#nav {
-    grid-row: 1 / 30;
+#nav-div {
+    grid-row: 1 / 20;
+    background-color: #202b3b;
+    border-radius: 15px;
+}
+
+#search-bar-div {
+    grid-column: 2 / 3;
+    grid-row: 1 / 2;
+    background-color: #202b3b;
+    border-radius: 15px;
+    display: flex;
+    align-items: center; /* Center items vertically */
+}
+
+#search-form {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    border-radius: 15px;
 }
 
 #search-bar {
-    grid-column: 2 / 3;
-    grid-row: 1 / 2;
+    flex: 1; /* Take up the remaining space */
+    height: 100%;
+    padding: 5px 15px; /* Optional padding for better appearance */
+    border: none;
+    border-radius: 15px 0 0 15px; /* Rounded corners */
 }
 
-#display-info {
-    grid-row: 2 / 12;
+#search-btn {
+    height: 100%;
+    padding: 0 5px; /* Optional padding for better appearance */
+    border: none;
+    background-color: #202b3b;
+    border-radius: 0 15px 15px 0; /* Rounded corners */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
 }
 
-#todays-forecast {
-    grid-row: 12 / 20;
+#search-btn svg {
+    width: 48px;
+    height: 24px;
+    fill: #FCFAF6; /* Change color as needed */
 }
 
-#air-conditions {
-    grid-row: 20 / 30;
+input, select {
+    color: #FCFAF6;
+}
+
+input[type=text] {
+    background-color: #202b3b;
+}
+
+::placeholder {
+    color: #FCFAF6;
+    opacity: .8;
+    font-size: 15px;
+}
+
+#display-info-div {
+    grid-row: 2 / 8;
+    background-color: #202b3b;
+    border-radius: 15px;
+}
+
+#todays-forecast-div {
+    grid-row: 8 / 14;
+    background-color: #202b3b;
+    border-radius: 15px;
+}
+
+#air-conditions-div {
+    grid-row: 14 / 20;
     grid-column: 2;
+    background-color: #202b3b;
+    border-radius: 15px;
 }
 
-#seven-day-forecast {
+#seven-day-forecast-div {
     grid-column: 3 / 4;
-    grid-row: 1 / 30;
+    grid-row: 1 / 20;
+    background-color: #202b3b;
+    border-radius: 15px;
 }
 
-#main > div {
-    border: 1px solid black;
-    padding: 10px;
-    background-color: #335680;
-    border-radius: 20px;
-}
 
-p {
-    text-align: center;
-}

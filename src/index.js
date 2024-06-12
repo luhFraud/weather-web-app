@@ -4,4 +4,4 @@ import './style.css'
 
 const weather = new WeatherApi();
 
-weather.getData('london')
+weather.getData('california')

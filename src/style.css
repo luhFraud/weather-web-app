@@ -19,14 +19,20 @@ main {
     padding: 20px;
     column-gap: 20px;
     row-gap: 10px;
+}
+
+.light {
     background-color: #b5c7e0;
     color: #FFFFFF;
+}
+
+.light-grid {
+    background-color: #a7b9d9;
 }
 
 /* Grid Setup Start */
 
 .grid-container {
-    background-color: #a7b9d9;
     border-radius: 15px;
 }
 

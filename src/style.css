@@ -8,207 +8,105 @@
 
 body {
     font-family: "Poppins", sans-serif;
-    /*background-color: #FCFAF6;*/
 }
 
-#main {
+main {
     display: grid;
-    grid-template-columns: 0.5fr 3fr 2fr;
-    column-gap: 20px;
-    row-gap: 15px;
+    grid-template-columns: 1fr 6fr 4fr;
+    grid-template-rows: .5fr 3fr 3fr 3fr;
+    height: 100vh;
+    width: 100vw;
     padding: 20px;
-    min-height: 100vh;
-    background-color: #0b131e;
-    color: #FCFAF6;
+    column-gap: 20px;
+    row-gap: 10px;
+    background-color: #9BBEED;
+    color: #FFFFFF;
 }
 
-#nav-div {
-    grid-row: 1 / 20;
-    background-color: #202b3b;
+/* Grid Setup Start */
+
+.grid-container {
+    background-color: #C9D6E8;
     border-radius: 15px;
 }
 
-/* Search section */
+#side-nav{
+    grid-column: 1 / 2;
+    grid-row: 1 / 5;
+}
 
-#search-bar-div {
+#search-div {
     grid-column: 2 / 3;
     grid-row: 1 / 2;
-    background-color: #202b3b;
-    border-radius: 15px;
-    display: flex;
-    align-items: center; /* Center items vertically */
 }
+
+#toggle-div {
+    grid-column: 3 / 4;
+    grid-row: 1 / 2;
+}
+
+#current-weather-div {
+    grid-column: 2 / 3;
+    grid-row: 2 / 3;
+    padding: 15px 30px;
+}
+
+#current-hourly-forcast-div {
+    grid-column: 2 / 3;
+    grid-row: 3 / 4;
+}
+
+#current-weather-conditions-div {
+    grid-column: 2 / 3;
+    grid-row: 4 / 5;
+}
+
+#current-seven-forecast-div {
+    grid-column: 3 / 4;
+    grid-row: 2 / 5;
+}
+
+/* Grid Setup End */
+/* Side Nav Start */
+
+/* Side Nav End */
+/* Search Form Start */
 
 #search-form {
     display: flex;
-    width: 100%;
+    flex-direction: row;
     height: 100%;
-    border-radius: 15px;
+    width: 100%;
 }
 
 #search-bar {
-    flex: 1; /* Take up the remaining space */
-    height: 100%;
-    padding: 5px 15px; /* Optional padding for better appearance */
+    flex: 1;
     border: none;
-    border-radius: 15px 0 0 15px; /* Rounded corners */
-}
-
-#search-btn {
-    height: 100%;
-    padding: 0 5px; /* Optional padding for better appearance */
-    border: none;
-    background-color: #202b3b;
-    border-radius: 0 15px 15px 0; /* Rounded corners */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-}
-
-#search-btn svg {
-    width: 48px;
-    height: 24px;
-    fill: #FCFAF6; /* Change color as needed */
-    opacity: .6;
-}
-
-input, select {
-    color: #FCFAF6;
-    font-size: 15px;
+    padding: 15px;
+    border-radius: 15px 0px 0px 15px;
 }
 
 input[type=text] {
-    background-color: #202b3b;
+    background-color: transparent;
+    color: #FFFFFF;
+    font-size: 16px;
 }
 
 ::placeholder {
-    color: #FCFAF6;
-    opacity: .6;
-    font-size: 15px;
+    color: #FFFFFF;
 }
 
-/* Display info section */
-
-#display-info-div {
-    grid-row: 2 / 8;
-    border-radius: 15px;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
+#search-btn {
+    height: 45px;
+    width: 45px;
+    padding: 5px;
+    border: none;
+    border-radius: 0pc 15px 15px 0px;
+    background-color: #C9D6E8;
+    fill: #FFFFFF;
+    cursor: pointer;
 }
 
-#location-weather-info-div {
-    flex: 2;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    padding: 30px 30px;
-    height: 100%;
-}
-
-#location-weather-info-div p {
-    opacity: .6;
-}
-
-#location-weather-info-div h1 {
-    opacity: .9;
-}
-
-#location-temp {
-    font-size: 64px;
-    opacity: .9;
-}
-
-#location-weather-icon-div {
-    flex: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0px 60px 0px 0px;
-    flex-shrink: 0;
-    height: 100%;
-}
-
-#location-weather-icon {
-    height: 145px;
-    max-width: 100%;
-}
- 
-/* Todays forcase info section */
-
-#todays-forecast-div {
-    grid-row: 8 / 14;
-    background-color: #202b3b;
-    border-radius: 15px;
-    display: flex;
-    flex-direction: column;
-}
-
-#hourly-forcast-info {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    height: 100%;
-}
-
-#hourly-header {
-    font-weight: bold;
-    opacity: .6;
-    padding: 30px 30px 0px 30px;
-    text-transform: uppercase;
-}
-
-#hourly-slider-container {
-    display: grid;
-    grid-auto-flow: column;
-    grid-auto-columns: 15%;
-    flex-direction: row;
-    overflow-x: auto;
-    overscroll-behavior-inline: contain;
-    padding: 15px;
-    margin-top: -80px;
-}
-
-.hourly-weather {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    border-right: 1px solid rgba(252, 250, 246, 0.2);
-    gap: 15px;
-    padding: 0px 20px 0px 20px;
-    height: auto;
-}
-
-.hourly-time {
-    font-weight: bold;
-    opacity: .6;
-}
-
-.hourly-icon {
-    height: 62px;
-}
-
-.hourly-temp {
-    opacity: .9;
-}
-
-/* Air conditions info section */
-
-#air-conditions-div {
-    grid-row: 14 / 20;
-    grid-column: 2;
-    background-color: #202b3b;
-    border-radius: 15px;
-}
-
-#seven-day-forecast-div {
-    grid-column: 3 / 4;
-    grid-row: 2 / 20;
-    background-color: #202b3b;
-    border-radius: 15px;
-}
-
+/* Search Form End */
+/* Current Weather Start */
 

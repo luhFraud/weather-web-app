@@ -19,14 +19,14 @@ main {
     padding: 20px;
     column-gap: 20px;
     row-gap: 10px;
-    background-color: #9BBEED;
+    background-color: #b5c7e0;
     color: #FFFFFF;
 }
 
 /* Grid Setup Start */
 
 .grid-container {
-    background-color: #C9D6E8;
+    background-color: #a7b9d9;
     border-radius: 15px;
 }
 
@@ -75,12 +75,14 @@ main {
 #search-form {
     display: flex;
     flex-direction: row;
+    justify-content: center;
+    align-items: center;
     height: 100%;
     width: 100%;
 }
 
 #search-bar {
-    flex: 1;
+    flex: 90%;
     border: none;
     padding: 15px;
     border-radius: 15px 0px 0px 15px;
@@ -97,15 +99,22 @@ input[type=text] {
 }
 
 #search-btn {
-    height: 45px;
-    width: 45px;
-    padding: 5px;
+    flex: 10%;
     border: none;
     border-radius: 0pc 15px 15px 0px;
-    background-color: #C9D6E8;
+    background-color: #a7b9d9;
     fill: #FFFFFF;
     cursor: pointer;
 }
+
+#search-btn svg {
+    height: 45px;
+    width: 45px;
+    padding: 5px;
+}
+
+
+
 
 /* Search Form End */
 /* Current Weather Start */

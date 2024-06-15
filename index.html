@@ -6,11 +6,9 @@
     <title>Document</title>
 </head>
 <body>
-    <div id="main">
-        <div id="nav-div">
-            <p>1</p>
-        </div>
-        <div id="search-bar-div">
+    <main>
+        <div class="grid-container" id="side-nav"><p>Side Nav</p></div>
+        <div class="grid-container" id="search-div">
             <form id="search-form">
                 <input type="text" id="search-bar" name="search-bar" placeholder="Search location...">
                 <button type="submit" id="search-btn">
@@ -22,76 +20,23 @@
                 </button>
             </form>
         </div>
-        <div id="display-info-div">
-            <div id="location-weather-info-div">
-                <div id="location-weather-info">
-                    <h1 id="location-name">Los Angeles</h1>
-                    <p id="location-chance-of-rain">Chance of rain: 0%</p>
+        <div class="grid-container" id="toggle-div"><p>Toggle Div</p></div>
+        <div class="grid-container" id="current-weather-div">
+            <div id="current-weather-left">
+                <div id="current-weather-header">
+                    <h1>Los Angeles</h1>
+                    <p>Country: United States of America</p>
                 </div>
-                <div id="location-temp-div">
-                    <h1 id="location-temp">64&deg;</h1>
-                </div>
-            </div>
-            <div id="location-weather-icon-div">
-                <img src="../src/images/sunny.png" alt="" id="location-weather-icon">
-            </div>
-        </div>
-        <div id="todays-forecast-div">
-            <div id="hourly-forcast-info">
-                <div id="hourly-header">
-                    <p>Today's Forecast</p>
-                </div>
-                <div id="hourly-slider-container">
-                    <div class="hourly-weather">
-                        <p class="hourly-time">6:00 AM</p>
-                        <img src="../src/images/cloudy.png" alt="" class="hourly-icon">
-                        <h2 class="hourly-temp">58&deg;</h2>
-                    </div>
-                    <div class="hourly-weather">
-                        <p class="hourly-time">7:00 AM</p>
-                        <img src="../src/images/cloudy.png" alt="" class="hourly-icon">
-                        <h2 class="hourly-temp">60&deg;</h2>
-                    </div>
-                    <div class="hourly-weather">
-                        <p class="hourly-time">8:00 AM</p>
-                        <img src="../src/images/sunny.png" alt="" class="hourly-icon">
-                        <h2 class="hourly-temp">62&deg;</h2>
-                    </div>
-                    <div class="hourly-weather">
-                        <p class="hourly-time">9:00 AM</p>
-                        <img src="../src/images/sunny.png" alt="" class="hourly-icon">
-                        <h2 class="hourly-temp">65&deg;</h2>
-                    </div>
-                    <div class="hourly-weather">
-                        <p class="hourly-time">10:00 AM</p>
-                        <img src="../src/images/sunny.png" alt="" class="hourly-icon">
-                        <h2 class="hourly-temp">69&deg;</h2>
-                    </div>
-                    <div class="hourly-weather">
-                        <p class="hourly-time">11:00 AM</p>
-                        <img src="../src/images/sunny.png" alt="" class="hourly-icon">
-                        <h2 class="hourly-temp">72&deg;</h2>
-                    </div>
-                    <div class="hourly-weather">
-                        <p class="hourly-time">12:00 PM</p>
-                        <img src="../src/images/sunny.png" alt="" class="hourly-icon">
-                        <h2 class="hourly-temp">76&deg;</h2>
-                    </div>
-                    <div class="hourly-weather">
-                        <p class="hourly-time">1:00 PM</p>
-                        <img src="../src/images/sunny.png" alt="" class="hourly-icon">
-                        <h2 class="hourly-temp">78&deg;</h2>
-                    </div>
+                <div id="current-weather-temp">
+                    <h1>73&deg;</h1>
                 </div>
             </div>
         </div>
-        <div id="air-conditions-div">
-            <p>5</p>
-        </div>
-        <div id="seven-day-forecast-div">
-            <p>6</p>
-        </div>
-    </div>
+        <div class="grid-container" id="current-hourly-forcast-div"><p>Hourly Forecast</p></div>
+        <div class="grid-container" id="current-weather-conditions-div"><p>Air Conditions</p></div>
+        <div class="grid-container" id="current-seven-forecast-div"><p>Seven Day Forecast</p></div>
+    </main>
     <script src="main.js"></script>
 </body>
 </html>
+

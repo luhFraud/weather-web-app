@@ -67,15 +67,19 @@ main {
 #current-weather-conditions-div {
     grid-column: 2 / 3;
     grid-row: 4 / 5;
+    padding: 15px 30px 15px 30px;
 }
 
 #current-seven-forecast-div {
     grid-column: 3 / 4;
     grid-row: 2 / 5;
+    padding: 30px;
 }
 
 /* Grid Setup End */
 /* Side Nav Start */
+
+
 
 /* Side Nav End */
 /* Search Form Start */
@@ -122,6 +126,11 @@ input[type=text] {
 }
 
 /* Search Form End */
+/* Temp Toggle Start */
+
+
+
+/* Temp Toggle End*/
 /* Current Weather Start */
 
 #current-weather-items {
@@ -162,3 +171,77 @@ input[type=text] {
 }
 
 /* Current Weather End */
+/* Today's Forecast Start */
+
+/* Today's Forecast End */
+/* Weather Conditions Start */
+
+#current-weather-condition-items {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+}
+
+#weather-condition-header {
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-bottom: 5px;
+    opacity: .8;
+}
+
+#weather-condition-bottom {
+    flex: 1;
+    display: flex;
+    flex-direction: row;
+}
+
+#weather-condition-left {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 50%;
+}
+
+#weather-condition-right {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 50%;
+}
+
+.weather-condition {
+    display: flex;
+    flex-direction: column;
+}
+
+.weather-condition-name {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.weather-condition-name p {
+    font-size: 18px;
+    opacity: .8;
+}
+
+.weather-condition-icon {
+    height: 32px;
+    width: 32px;
+    fill: #FFFFFF;
+    opacity: .8;
+    margin-right: 5px;
+}
+
+.weather-condition-status h1 {
+    font-size: 28px;
+    padding-left: 40px;
+}
+
+/* Weather Conditions End */
+/* 7 Day Forecast Start */
+
+
+
+/* 7 Day Forecast End */

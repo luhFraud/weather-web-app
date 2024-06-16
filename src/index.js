@@ -1,7 +1,6 @@
 import _ from 'lodash';
+import { UI } from './UI.js';
 import { WeatherApi } from './weather_api';
 import './style.css'
 
-const weather = new WeatherApi();
-
-weather.getData('california')
+UI.loadPage();

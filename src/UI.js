@@ -2,7 +2,7 @@ import { WeatherApi } from "./weather_api";
 
 export class UI {
     static loadPage() {
-        UI.displayWeather('new york');
+        UI.displayWeather('los angeles');
     }
 
     static async displayWeather(location) {
@@ -53,8 +53,51 @@ export class UI {
             windSpeed.innerHTML = `${windMph} MPH`
             uvIndex.innerHTML = uv
 
+            //Sunset and Sunrise
+            const sunrise = data.forecast.forecastday[0].astro.sunrise;
+            const sunset = data.forecast.forecastday[0].astro.sunset
+
+            //Setting icon
+            const currentWeatherIcon = document.getElementById("current-weather-icon");
+            const currentCondition = data.current.condition.text
+
         } else {
             console.error("Invalid weather data received:", data);
         }
+    }
+
+    static getIcon(condition, sunrise, sunset) {
+        const currentTime = new Date();
+        const currentHour = currentTime.getHours();
+        const currentMinutes = currentTime.getMinutes();
+
+        const [sunriseHour, sunriseMinute] = UI.parseTime(sunrise);
+        const [sunsetHour, sunsetMinute] = UI.parseTime(sunset);
+
+        let icon;
+        switch(condition.toLowerCase()) {
+            case 'clear':
+            case 'sunny':
+                if (currentHour > sunriseHour && (currentHour < sunsetHour || (currentHour === sunsetHour && currentMinutes < sunsetMinute))) {
+                    icon = '../src/images/sunny.png';
+                } else {
+                    icon = '../src/images/moon.png';
+                }
+                break;
+            
+        }
+
+    }
+
+    static parseTime(timeStr) {
+        const [time, modifier] = timeStr.split(' ');
+        let [hours, minutes] = time.split(':').map(Number);
+        if (modifier === 'PM' && hours !== 12) {
+            hours += 12;
+        }
+        if (modifier === 'AM' && hours === 12) {
+            hours = 0;
+        }
+        return [hours, minutes];
     }
 }

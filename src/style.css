@@ -298,6 +298,64 @@ input[type=text] {
 /* Weather Conditions End */
 /* 7 Day Forecast Start */
 
+#current-seven-forecast-item {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+}
 
+#current-seven-header {
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-bottom: 5px;
+    opacity: .8;
+}
+
+#weekly-forecast {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+}
+
+.day-forcast {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr; /* Adjust the fractions to control the widths */
+    align-items: center;
+    justify-content: space-evenly;
+    padding: 10px 0; /* Optional: Add padding between rows */
+}
+
+.day-forecast-icon-condition {
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Ensure the content starts from the left */
+    gap: 10px; /* Add space between the icon and text */
+    min-width: 0; /* Prevent overflow issues */
+}
+
+.weekly-forecast-icon {
+    height: 52px;
+    width: 52px;
+    margin-right: 10px;
+}
+
+.max-min-temp {
+    text-align: end;
+}
+
+.day-forcast:first-child {
+    padding-bottom: 20px;
+}
+
+.day-forcast {
+    padding: 20px 0px;
+}
+
+.day-forcast:not(:last-child) {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+    padding-bottom: none;
+}
 
 /* 7 Day Forecast End */

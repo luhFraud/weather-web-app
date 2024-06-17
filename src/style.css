@@ -61,7 +61,8 @@ main {
 #current-hourly-forcast-div {
     grid-column: 2 / 3;
     grid-row: 3 / 4;
-    padding: 15px 30px 0px 30px;
+    padding: 15px 30px 15px 30px;
+    overflow: hidden;
 }
 
 #current-weather-conditions-div {
@@ -172,6 +173,61 @@ input[type=text] {
 
 /* Current Weather End */
 /* Today's Forecast Start */
+
+#hourly-forecast-items {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+}
+
+#hourly-forecast-slider-div {
+    height: 100%;
+    width: 100%;
+    overflow-x: auto;
+}
+
+#hourly-forecast-header {
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-bottom: 5px;
+    opacity: .8;
+}
+
+#slider-container {
+    display: flex;
+    flex-direction: row;
+    padding: 10px 5px;
+    width: max-content;
+    overscroll-behavior-inline: contain;
+}
+
+.hourly-weather {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    padding-right: 35px;
+    padding-left: 35px;
+}
+
+.hourly-weather:not(:last-child) {
+    border-right: 1px solid rgba(255, 255, 255, 0.4);
+
+}
+
+#hourly-time {
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 16px;
+    opacity: .8;
+    width: 100%;
+}
+
+#hourly-icon {
+    height: 64px;
+    width: 64px;
+}
 
 /* Today's Forecast End */
 /* Weather Conditions Start */

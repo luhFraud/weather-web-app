@@ -1,12 +1,11 @@
 export class WeatherApi {
     constructor() {
         this.key = 'ca56bc537e2e48e49ba53845241006';
-        this.url = 'https://api.weatherapi.com/v1';
     }
 
     async getData(location) {
         try {
-            const response = await fetch(`${this.url}/forecast.json?key=${this.key}&q=${location}&days=7`);
+            const response = await fetch(`https://api.weatherapi.com/v1/forecast.json?key=${this.key}&q=${location}&days=7`);
             if (!response.ok) {
                 throw new Error(`HTTP error! status: ${response.status}`);
             }

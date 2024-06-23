@@ -1,4 +1,13 @@
 import { WeatherApi } from "./weather_api";
+import cloudyMoon from "./images/cloudy-moon.png"
+import cloudy from "./images/cloudy.png"
+import fog from "./images/fog.png"
+import moon from "./images/moon.png"
+import partlyCloudy from "./images/partly-cloudy.png"
+import rainy from "./images/rainy.png"
+import snow from "./images/snow.png"
+import sunny from "./images/sunny.png"
+import thunder from "./images/thunder.png"
 
 export class UI {
     static loadPage() {
@@ -303,14 +312,14 @@ export class UI {
 
         switch (condition) {
             case 1000: // Sunny / Clear
-                icon = isDayTime ? './src/images/sunny.png' : './src/images/moon.png';
+                icon = isDayTime ? sunny : moon;
                 break;
             case 1003: // Partly cloudy
-                icon = isDayTime ? './src/images/cloudy.png' : './src/images/cloudy-moon.png';
+                icon = isDayTime ? cloudy : partlyCloudy;
                 break;
             case 1006: // Cloudy
             case 1009: // Overcast
-                icon = './src/images/cloudy.png'
+                icon = cloudy
                 break;
             case 1063: // Patchy rain possible
             case 1150: // Patchy light drizzle
@@ -328,12 +337,12 @@ export class UI {
             case 1240: // Light rain shower
             case 1243: // Moderate or heavy rain shower
             case 1246: // Torrential rain shower
-                icon = './src/images/rainy.png';
+                icon =  rainy;
                 break;
             case 1147: // Freezing fog
             case 1030: //Mist
             case 1135: //Fog
-                icon = './src/images/fog.png';
+                icon = fog;
                 break;
             case 1066: // Patchy snow possible
             case 1069: // Patchy sleet possible
@@ -355,17 +364,17 @@ export class UI {
             case 1264: // Moderate or heavy showers of ice pellets
             case 1279: // Patchy light snow with thunder
             case 1282: // Moderate or heavy snow with thunder
-                icon = './src/images/snow.png';
+                icon = snow;
                 break;
             case 1087: // Thundery outbreaks possible
             case 1273: // Patchy light rain with thunder
             case 1276: // Moderate or heavy rain with thunder
             case 1279: // Patchy light snow with thunder
             case 1282: // Moderate or heavy snow with thunder
-                icon = './src/images/thunderstorm.png';
+                icon = thunder;
                 break;
             default:
-                icon = './src/images/sunny.png'; // Default icon if condition doesn't match
+                icon = sunny; // Default icon if condition doesn't match
                 break;
         }
         return icon;
@@ -397,14 +406,14 @@ export class UI {
     
         switch (condition) {
             case 1000: // Sunny / Clear
-                icon = isNight ? './src/images/moon.png' : './src/images/sunny.png';
+                icon = isNight ? moon : sunny;
                 break;
             case 1003: // Partly cloudy
-                icon = isNight ? './src/images/cloudy-moon.png' : './src/images/cloudy.png';
+                icon = isNight ? cloudyMoon : partlyCloudy;
                 break;
             case 1006: // Cloudy
             case 1009: // Overcast
-                icon = './src/images/cloudy.png';
+                icon = cloudy
                 break;
             case 1063: // Patchy rain possible
             case 1150: // Patchy light drizzle
@@ -422,12 +431,12 @@ export class UI {
             case 1240: // Light rain shower
             case 1243: // Moderate or heavy rain shower
             case 1246: // Torrential rain shower
-                icon = './src/images/rainy.png';
+                icon = rainy
                 break;
             case 1147: // Freezing fog
             case 1030: // Mist
             case 1135: // Fog
-                icon = './src/images/fog.png';
+                icon = fog
                 break;
             case 1066: // Patchy snow possible
             case 1069: // Patchy sleet possible
@@ -449,17 +458,17 @@ export class UI {
             case 1264: // Moderate or heavy showers of ice pellets
             case 1279: // Patchy light snow with thunder
             case 1282: // Moderate or heavy snow with thunder
-                icon = './src/images/snow.png';
+                icon = snow
                 break;
             case 1087: // Thundery outbreaks possible
             case 1273: // Patchy light rain with thunder
             case 1276: // Moderate or heavy rain with thunder
             case 1279: // Patchy light snow with thunder
             case 1282: // Moderate or heavy snow with thunder
-                icon = './src/images/thunderstorm.png';
+                icon = thunder
                 break;
             default:
-                icon = './src/images/sunny.png'; // Default icon if condition doesn't match
+                icon = sunny // Default icon if condition doesn't match
                 break;
         }
     
@@ -471,14 +480,14 @@ export class UI {
 
         switch (condition) {
             case 1000: // Sunny / Clear
-                icon = './src/images/sunny.png';
+                icon = sunny
                 break;
             case 1003: // Partly cloudy
-                icon = './src/images/cloudy.png' 
+                icon = cloudy
                 break;
             case 1006: // Cloudy
             case 1009: // Overcast
-                icon = './src/images/cloudy.png'
+                icon = cloudy
                 break;
             case 1063: // Patchy rain possible
             case 1150: // Patchy light drizzle
@@ -496,12 +505,12 @@ export class UI {
             case 1240: // Light rain shower
             case 1243: // Moderate or heavy rain shower
             case 1246: // Torrential rain shower
-                icon = './src/images/rainy.png';
+                icon = rainy
                 break;
             case 1147: // Freezing fog
             case 1030: //Mist
             case 1135: //Fog
-                icon = './src/images/fog.png';
+                icon = fog
                 break;
             case 1066: // Patchy snow possible
             case 1069: // Patchy sleet possible
@@ -523,17 +532,17 @@ export class UI {
             case 1264: // Moderate or heavy showers of ice pellets
             case 1279: // Patchy light snow with thunder
             case 1282: // Moderate or heavy snow with thunder
-                icon = './src/images/snow.png';
+                icon = snow
                 break;
             case 1087: // Thundery outbreaks possible
             case 1273: // Patchy light rain with thunder
             case 1276: // Moderate or heavy rain with thunder
             case 1279: // Patchy light snow with thunder
             case 1282: // Moderate or heavy snow with thunder
-                icon = './src/images/thunderstorm.png';
+                icon = thunder
                 break;
             default:
-                icon = './src/images/sunny.png'; // Default icon if condition doesn't match
+                icon = sunny; // Default icon if condition doesn't match
                 break;
         }
         return icon;

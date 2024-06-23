@@ -8,8 +8,13 @@ export class UI {
 
     static async displayWeather(location) {
         const weather = new WeatherApi();
+        const loadingScreen = document.getElementById("loading-screen");
+        const main = document.querySelector('main')
 
         try {
+            loadingScreen.style.display = 'flex'
+            main.style.display = 'none'
+
             const data= await weather.getData(location);
             this.updateWeather(data);
             this.updateHourlyForecast(data)
@@ -17,11 +22,16 @@ export class UI {
             // Optionally, you can also process the forecastData here
         } catch (error) {
             console.error("Error fetching weather data:", error);
+        } finally {
+            loadingScreen.style.display = 'none'
+            main.style.display = 'grid'
         }
     }
 
     static eventListener() {
         UI.search()
+        UI.mode()
+        UI.temp()
     }
 
     static search() {
@@ -45,21 +55,75 @@ export class UI {
         }) 
     }
 
+    static mode() {
+        const toggle = document.getElementById("mode-switch-checkbox");
+        const slider = document.getElementById("mode-toggle-slider");
+        const main = document.querySelector('main');
+        const grids = main.getElementsByClassName("grid-container");
+
+        const loadingScreen = document.getElementById('loading-screen');
+    
+        slider.addEventListener("click", function() {
+            console.log(toggle.checked);
+    
+            if (!toggle.checked) {
+                main.classList.remove("light");
+                main.classList.add('dark');
+
+                loadingScreen.classList.remove('light-loading-screen');
+                loadingScreen.classList.add('dark-loading-screen')
+    
+                Array.from(grids).forEach(grid => {
+                    grid.classList.remove("light-grid");
+                    grid.classList.add('dark-grid');
+                });
+            } else {
+                main.classList.remove("dark");
+                main.classList.add('light');
+
+                loadingScreen.classList.add('light-loading-screen');
+                loadingScreen.classList.remove('dark-loading-screen')
+    
+                Array.from(grids).forEach(grid => {
+                    grid.classList.remove("dark-grid");
+                    grid.classList.add('light-grid');
+                });
+            }
+        });
+    }
+
+    static temp() {
+        const toggle = document.getElementById("temp-switch-checkbox");
+        const slider = document.getElementById("temp-toggle-slider");
+
+        slider.addEventListener('click', function(){
+            if(!toggle.checked) {
+                let location = document.getElementById("current-weather-header").querySelector('h1').innerHTML;
+                UI.displayWeather(location);
+            } else {
+                let location = document.getElementById("current-weather-header").querySelector('h1').innerHTML;
+                UI.displayWeather(location);
+            }
+        })
+    }
+    
     static updateWeather(data) {
         if (data && data.location && data.current && data.forecast) {
+            const toggle = document.getElementById("temp-switch-checkbox");
+
             //Main display
-            const name = data.location.name;
-            const country = data.location.country;
-            const tempF = data.current.temp_f;
-            const tempC = data.current.temp_c;
+            const name = data.location.name
+            const country = data.location.country
+            const tempF = Math.round(data.current.temp_f);
+            const tempC = Math.round(data.current.temp_c);
 
             //Air Conditions 
-            const feelsF = data.current.feelslike_f
-            const feelsC = data.current.feelslike_c
-            const windMph = data.current.wind_mph
-            const windKph = data.current.wind_kph
-            const uv = data.current.uv
-            const chanceOfRain = data.forecast.forecastday[0].day.daily_chance_of_rain;
+            const feelsF = Math.round(data.current.feelslike_f);
+            const feelsC = Math.round(data.current.feelslike_c);
+            const windMph = Math.round(data.current.wind_mph)
+            const windKph = Math.round(data.current.wind_kph);
+            const uv = Math.round(data.current.uv);
+            const chanceOfRain = Math.round(data.forecast.forecastday[0].day.daily_chance_of_rain);
 
             //Setting Main display info
             const currentWeatherHeader = document.getElementById("current-weather-header");
@@ -69,16 +133,28 @@ export class UI {
             
             currentName.innerHTML = name;
             currentCountry.innerHTML = `Country: ${country}`;
-            currentTemp.innerHTML = `${tempF}&deg`
+
+            if(toggle.checked) {
+                currentTemp.innerHTML = `${tempC}&deg`
+            } else {
+                currentTemp.innerHTML = `${tempF}&deg`
+            }
 
             //Setting Air Condition info
             const feelsLike = document.querySelector(".feels-like").querySelector("h1");
             const rainChance = document.querySelector(".chance-of-rain").querySelector("h1");
             const windSpeed = document.querySelector(".wind-speed").querySelector("h1");
             const uvIndex = document.querySelector(".uv-index").querySelector("h1");
-            feelsLike.innerHTML = `${feelsF}&deg`
+
+            if(toggle.checked) {
+                feelsLike.innerHTML = `${feelsC}&deg`
+                windSpeed.innerHTML = `${windKph} KPH`
+            } else {
+                feelsLike.innerHTML = `${feelsF}&deg`
+                windSpeed.innerHTML = `${windMph} MPH`
+            }
+
             rainChance.innerHTML = `${chanceOfRain}%`
-            windSpeed.innerHTML = `${windMph} MPH`
             uvIndex.innerHTML = uv
 
             //Sunset and Sunrise
@@ -101,6 +177,8 @@ export class UI {
     
     static updateHourlyForecast(data){
         if(data && data.location && data.current && data.forecast){
+            const toggle = document.getElementById("temp-switch-checkbox");
+            
             let hourlyForecast = data.forecast.forecastday[0].hour;
             
             const hourlySlider = document.getElementById("slider-container");
@@ -128,11 +206,18 @@ export class UI {
                 hourlyIcon.src = icon
                 hourlyWeather.appendChild(hourlyIcon);
 
-                let tempF = hour.temp_f
+                let tempF = Math.round(hour.temp_f)
+                let tempC = Math.round(hour.temp_c)
 
                 const hourlyTemp = document.createElement('h2');
                 hourlyTemp.setAttribute('id', "hourly-temp");
-                hourlyTemp.innerHTML = `${tempF}&deg;`
+
+                if(toggle.checked) {
+                    hourlyTemp.innerHTML = `${tempC}&deg;`
+                } else {
+                    hourlyTemp.innerHTML = `${tempF}&deg;`
+                }
+
                 hourlyWeather.appendChild(hourlyTemp)
                 
                 hourlySlider.appendChild(hourlyWeather);
@@ -145,17 +230,20 @@ export class UI {
 
     static updateWeeklyForecast(data){
         if(data && data.location && data.current && data.forecast){
+            const toggle = document.getElementById("temp-switch-checkbox");
+
             let forecast = data.forecast.forecastday;
 
             let days = ['Sun', 'Mon', 'Tue', 'Wed','Thu', 'Fri', 'Sat'];
-            let dayCounter = 1;
+            let todaysIndex = new Date().getDay();
+            let dayCounter = todaysIndex;
 
             const weeklyForcast = document.getElementById("weekly-forecast");
             weeklyForcast.innerHTML = '';
 
             forecast.forEach((day, index) => {
-                dayCounter = (dayCounter + 1) % 7;
                 const dayName = (index === 0) ? 'Today' : days[dayCounter]
+                dayCounter = (dayCounter + 1) % 7;
 
                 const dayForecast = document.createElement('div');
                 dayForecast.classList.add("day-forcast");
@@ -186,7 +274,13 @@ export class UI {
 
                 const forecastTemps = document.createElement('p');
                 forecastTemps.classList.add("max-min-temp")
-                forecastTemps.innerHTML = `${maxF}&deg; / ${minF}&deg;`
+
+                if(toggle.checked) {
+                    forecastTemps.innerHTML = `${maxC}&deg; / ${minC}&deg;`
+                } else {
+                    forecastTemps.innerHTML = `${maxF}&deg; / ${minF}&deg;`
+                }
+
                 dayForecast.appendChild(forecastTemps);
 
                 weeklyForcast.appendChild(dayForecast);

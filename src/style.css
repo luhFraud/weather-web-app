@@ -30,6 +30,15 @@ main {
     background-color: #a7b9d9;
 }
 
+.dark {
+    background-color: #0b131e;
+    color: #FFFFFF;
+}
+
+.dark-grid {
+    background-color: #202b3b;
+}
+
 /* Grid Setup Start */
 
 .grid-container {
@@ -39,6 +48,7 @@ main {
 #side-nav{
     grid-column: 1 / 2;
     grid-row: 1 / 5;
+    padding: 20px 5px;
 }
 
 #search-div {
@@ -49,6 +59,7 @@ main {
 #toggle-div {
     grid-column: 3 / 4;
     grid-row: 1 / 2;
+    background-color: transparent;
 }
 
 #current-weather-div {
@@ -80,7 +91,43 @@ main {
 /* Grid Setup End */
 /* Side Nav Start */
 
+#side-nav-items {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    height: 100%;
+    width: 100%;
+}
 
+#side-nav-top {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+}
+
+.side-nav-icon {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.side-nav-icon svg {
+    height: 40px;
+    width: 40px;
+    fill: #FFFFFF;
+}
+
+.side-nav-icon p {
+    text-transform: uppercase;
+    font-weight: bold;
+    letter-spacing: 1px;
+    font-size: 14px;
+}
 
 /* Side Nav End */
 /* Search Form Start */
@@ -115,7 +162,7 @@ input[type=text] {
     flex: 10%;
     border: none;
     border-radius: 0pc 15px 15px 0px;
-    background-color: #a7b9d9;
+    background-color: transparent;
     fill: #FFFFFF;
     cursor: pointer;
 }
@@ -127,11 +174,100 @@ input[type=text] {
 }
 
 /* Search Form End */
-/* Temp Toggle Start */
+/* Toggle Start */
 
+#toggle-items {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 5px 10px;
+    gap: 25px;
+}
 
+#toggle-mode-switch {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
 
-/* Temp Toggle End*/
+#toggle-temp-switch {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+}
+
+.switch input { 
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #a7b9d9;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+  
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: #b5c7e0;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+  
+input:checked + .slider {
+    background-color: #202b3b;
+}
+  
+input:checked + .slider:before {
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px);
+}
+  
+  /* Rounded sliders */
+.slider.round {
+    border-radius: 34px;
+}
+  
+.slider.round:before {
+    border-radius: 50%;
+}
+
+#toggle-mode-switch > svg {
+    fill: #FFFFFF;
+    height: 24px;
+    width: 24px;
+}
+
+#toggle-temp-switch > p {
+    font-size: 26px;
+}
+
+/*  Toggle End*/
 /* Current Weather Start */
 
 #current-weather-items {
@@ -359,3 +495,100 @@ input[type=text] {
 }
 
 /* 7 Day Forecast End */
+
+.light-loading-screen {
+    background-color: #a7b9d9;
+}
+
+.dark-loading-screen {
+    background-color: #202b3b;
+}
+
+#loading-screen {
+    display: none;
+    height: 100vh;
+    width: 100%;
+    z-index: 1px;
+}
+
+.ring
+{
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
+  width:150px;
+  height:150px;
+  border:3px solid #3c3c3c;
+  border-radius:50%;
+  text-align:center;
+  line-height:150px;
+  font-family:sans-serif;
+  font-size:20px;
+  color:#FFFFFF;
+  letter-spacing:4px;
+  text-transform:uppercase;
+  text-shadow:0 0 10px #FFFFFF;
+  box-shadow:0 0 20px rgba(0,0,0,.5);
+}
+.ring:before
+{
+  content:'';
+  position:absolute;
+  top:-3px;
+  left:-3px;
+  width:100%;
+  height:100%;
+  border:3px solid transparent;
+  border-top:3px solid #FFFFFF;
+  border-right:3px solid #FFFFFF;
+  border-radius:50%;
+  animation:animateC 2s linear infinite;
+}
+
+#load-span
+{
+  display:block;
+  position:absolute;
+  top:calc(50% - 2px);
+  left:50%;
+  width:50%;
+  height:4px;
+  background:transparent;
+  transform-origin:left;
+  animation:animate 2s linear infinite;
+}
+#load-span:before
+{
+  content:'';
+  position:absolute;
+  width:16px;
+  height:16px;
+  border-radius:50%;
+  background:#FFFFFF;
+  top:-6px;
+  right:-8px;
+  box-shadow:0 0 20px #FFFFFF;
+}
+@keyframes animateC
+{
+  0%
+  {
+    transform:rotate(0deg);
+  }
+  100%
+  {
+    transform:rotate(360deg);
+  }
+}
+@keyframes animate
+{
+  0%
+  {
+    transform:rotate(45deg);
+  }
+  100%
+  {
+    transform:rotate(405deg);
+  }
+}

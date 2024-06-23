@@ -1,7 +1,7 @@
 export class WeatherApi {
     constructor() {
         this.key = 'ca56bc537e2e48e49ba53845241006';
-        this.url = 'http://api.weatherapi.com/v1';
+        this.url = 'https://api.weatherapi.com/v1';
     }
 
     async getData(location) {
